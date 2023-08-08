@@ -7,6 +7,13 @@ public class playerMovement : MonoBehaviour
 {
     public Rigidbody2D playerRigidbody2d;
     public float speed;
+
+    public GameObject canvas;
+
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
     void Update()
     {
         
@@ -39,6 +46,8 @@ public class playerMovement : MonoBehaviour
         if (collision.tag == "Door")    // for checking tag other.tag="tagName" or collision.gameObject.comparetag("tagName") is also useable.
         {
             Debug.Log("Level Compelete!");
+            canvas.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
