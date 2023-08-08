@@ -23,6 +23,7 @@ public class gameWonUI : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("Level1");
+        Time.timeScale = 1.0f;
     }
 
     public void pause()

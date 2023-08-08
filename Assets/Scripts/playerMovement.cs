@@ -8,11 +8,12 @@ public class playerMovement : MonoBehaviour
     public Rigidbody2D playerRigidbody2d;
     public float speed;
 
-    public GameObject canvas;
+    public GameObject gameWonCanvas;
+    public GameObject gameLooseCanvas;
 
     private void Start()
     {
-        Time.timeScale = 1.0f;
+       // Time.timeScale = 1.0f;
     }
     void Update()
     {
@@ -43,12 +44,26 @@ public class playerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Door")    // for checking tag other.tag="tagName" or collision.gameObject.comparetag("tagName") is also useable.
+        if (collision.tag == "Door")    // for checking tag other.tag=="tagName" or collision.gameObject.comparetag("tagName") is also useable.
         {
             Debug.Log("Level Compelete!");
-            canvas.SetActive(true);
+            gameWonCanvas.SetActive(true);
+            Time.timeScale = 0f;
+        }
+         else if (collision.tag == "Enemy")
+        {
+            Debug.Log("You Loose!");
+            gameLooseCanvas.SetActive(true);
             Time.timeScale = 0f;
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.compare == "Enemy")
+    //    {
+    //        Debug.Log("You Loose!");
+    //    }
+    //}
 
 }
